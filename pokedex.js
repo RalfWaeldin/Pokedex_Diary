@@ -42,7 +42,7 @@ card3.textContent = "Karte 3";
 document.body.appendChild(card3);
 //BEISPIEL ENDE
 
-// Das muss an jede Karte gehängt werden (Wenn ich das richitg verstehe :D)
+// notefields anhängen
 attachNoteField(card1, "karte1");
 attachNoteField(card2, "karte2");
 attachNoteField(card3, "karte3");
