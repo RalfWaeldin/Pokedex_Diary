@@ -3,8 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./main.js" defer></script>
     <title>pokedex</title>
   </head>
-  <body></body>
+  <body>
+  <nav class="bg-white border-b shadow-sm">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+
+<!-- Links -->
+    <div class="flex items-center gap-6">
+      <a
+        href="index.html"
+        class="font-semibold text-blue-600 hover:text-blue-800"
+      >
+        Home
+      </a>
+      <a
+        href="pokedex.html"
+        class="font-semibold text-gray-600 hover:text-gray-800"
+      >
+        Favoriten
+      </a>
+    </div>
+
+<!-- Suche -->
+    <div class="flex items-center gap-2">
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Pokémon suchen…"
+        class="border rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button
+        id="clear-search"
+        class="border rounded-lg px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200"
+      >
+        Clear
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Hero section -->
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-4 text-center">Unser Pokémon Team des Tages:</h1>
+        <div
+          id="pokemon-container"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+        <!-- Hier wird das Tagesmenue produziert-->
+      </div>
+    </div>
+  </body>
 </html>
