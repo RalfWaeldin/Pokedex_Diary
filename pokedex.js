@@ -31,22 +31,47 @@ function updatePokedexCount() {
   countEl.textContent = getPokedex().length;
 }
 
+// function attachNoteField(element, pokemonId) {
+//   const textarea = document.createElement("textarea");
+//   textarea.placeholder = "Deine persönliche Notiz...";
+//   textarea.className =
+//     "w-full mt-3 p-2 text-sm border rounded-lg focus:ring-2 focus:ring-red-400 outline-none";
+
+//   // Initiale Notiz aus pokedex laden
+//   const pokedex = JSON.parse(localStorage.getItem("pokedex")) || [];
+//   const entry = pokedex.find((p) => p.id === pokemonId);
+//   textarea.value = entry?.note || "";
+
+//   // Bei Eingabe speichern
+//   textarea.addEventListener("input", () => {
+//     const updated = pokedex.map((p) =>
+//       p.id === pokemonId ? { ...p, note: textarea.value } : p
+//     );
+//     localStorage.setItem("pokedex", JSON.stringify(updated));
+//   });
+
+//   element.appendChild(textarea);
+// }
+
 function attachNoteField(element, pokemonId) {
   const textarea = document.createElement("textarea");
   textarea.placeholder = "Deine persönliche Notiz...";
   textarea.className =
     "w-full mt-3 p-2 text-sm border rounded-lg focus:ring-2 focus:ring-red-400 outline-none";
 
-  // Initiale Notiz aus pokedex laden
+  // Initiale Notiz laden
   const pokedex = JSON.parse(localStorage.getItem("pokedex")) || [];
   const entry = pokedex.find((p) => p.id === pokemonId);
   textarea.value = entry?.note || "";
 
-  // Bei Eingabe speichern
+  // Bei Eingabe speichern (Pokedex jedes Mal neu laden)
   textarea.addEventListener("input", () => {
-    const updated = pokedex.map((p) =>
+    const currentPokedex = JSON.parse(localStorage.getItem("pokedex")) || [];
+
+    const updated = currentPokedex.map((p) =>
       p.id === pokemonId ? { ...p, note: textarea.value } : p
     );
+
     localStorage.setItem("pokedex", JSON.stringify(updated));
   });
 
