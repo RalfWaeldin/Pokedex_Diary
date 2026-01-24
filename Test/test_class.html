@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="./test_class.js"></script>
+    <title>Classtest</title>
+  </head>
+  <body>
+    <div name="Suche1">
+      <div>
+        <div>
+          <p>
+            Suche Generation:<br />
+            (Generationsname oder Id eingeben)
+          </p>
+        </div>
+        <input id="input1" type="text" class="border-1 mt-1" />
+        <button id="button1" class="border-1 bg-gray-300">execute</button>
+      </div>
+      <textarea id="output1" class="border-1 w-60 h-30 mt-1"></textarea>
+    </div>
+    <div name="Suche2">
+      <div>
+        <div>
+          <p>
+            Get Pokamon Detail:<br />
+            (Pokamon Id eingeben)
+          </p>
+        </div>
+        <input id="input2" type="text" class="border-1 mt-1" />
+        <button id="button2" class="border-1 bg-gray-300">execute</button>
+      </div>
+      <textarea id="output2" class="border-1 w-60 h-30 mt-1"></textarea>
+    </div>
+    <div name="Suche3">
+      <div>
+        <div>
+          <p>
+            Get Pokamon Detail Card:<br />
+            (Pokamon Id eingeben)
+          </p>
+        </div>
+        <input id="input3" type="text" class="border-1 mt-1" />
+        <button id="button3" class="border-1 bg-gray-300">execute</button>
+      </div>
+      <div id="card3"></div>
+    </div>
+    <div name="Suche4">
+      <div>
+        <div>
+          <p>Pokemon Namen Suche:</p>
+        </div>
+        <input id="input4" type="text" class="border-1 mt-1" />
+        <select id="startseek4">
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <select id="listlength4">
+          <option value="2">2</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="80">80</option>
+        </select>
+        <select id="generationchoice4">
+          <option value="0">Alle</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+      <div id="output4" class="border-1 w-120 h-50 mt-1 overflow-scroll"></div>
+    </div>
+  </body>
+</html>
