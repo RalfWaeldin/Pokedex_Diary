@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./main.js"></script>
+    <title>pokedex</title>
+  </head>  
+  <body class="bg-gray-50 text-slate-800 font-sans">
+    <nav class="sticky top-0 z-[60] bg-white border-b shadow-sm">
+      <div
+        class="container mx-auto px-4 py-3 flex items-center justify-between"
+      >  
+
+<!-- Links -->
+        <div class="flex items-center gap-6">
+          <a
+            href="index.html"
+            class="flex items-center gap-2 font-semibold text-red-600 hover:text-red-800"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24" 
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2" 
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M2 12h20M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+                fill="currentColor"
+              />
+            </svg>
+            <span class="text-slate-800 font-bold">PokéTeams</span>
+          </a>
+
+          <a
+            href="pokedex.html"
+            class="flex items-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-full font-medium hover:bg-red-200 transition"
+          >
+            <span>Mein Pokédex</span>
+            <span
+              id="pokedex-count"
+              class="bg-red-600 text-white text-xs px-2 py-0.5 rounded-full"
+              >0</span
+            >
+          </a>
+        </div>
+
+<!-- Suche -->
+        <div
+          id="search-form"
+          class="flex shadow-lg rounded-full overflow-hidden border border-gray-200 bg-white focus-within:ring-2 focus-within:ring-red-400 transition"
+        >
+          <div class="pl-4 flex items-center text-gray-400">
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+            ></path>
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Pokémon suchen…"
+            class="flex-1 p-4 outline-none text-slate-700 placeholder-gray-400"
+          />
+          <button
+            id="search-clear"
+            class="px-3 py-1 text-sm"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </nav>
+
+<!-- Hero section -->
+    <div id="hero" class="max-w-7xl mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-4 text-center">
+        Unser Pokémon Team des Tages:
+      </h1>
+      <div
+        id="pokemon-container"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+      <!-- Hier wird das Tagesmenue produziert-->
+      </div>
+    </div>
+
+<!-- search result section -->    
+    <section id="search-result-viewer" class="max-w-7xl mx-auto p-4 hidden">
+     <h1 class="text-3xl font-bold mb-4 text-center">
+        Pokémon Search Results:
+      </h1>
+      <div id="search-result-container" class="grid grid-cols-1 gap-6">
+      <!-- Hier werden die Suchresultate angezeigt -->
+       <!-- 
+      <div name="result-item" class="bg-white h-24 border border-gray-100 rounded-2xl shadow-md flex place-content-between">
+          <div name="result-item-header" class="bg-green-500 h-24 w-120 rounded-l-2xl flex place-content-between">
+            <div class="ml-4 mr-4 flex items-center ">
+              <span name="pokemon-id" class="font-bold text-4xl text-white opacity-50">#0907</span>
+            </div>
+            <div class="w-24 h-24 flex items-center align-center">
+              <img class="w-20 h-20" 
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/907.png" 
+              alt="floragato" />
+            </div>
+          </div>
+          <div name=" result-item-content" class="w-full flex place-content-around">
+              <div name="pokemon-details" class="w-fit h-24 ml-5 mr-5 text-center">
+                <p name= pokemon-name class="capitalize font-bold text-2xl text-slate-800 mb-2">
+                  floragato
+                </p>
+                <div name="pokemon-types">
+                  <p class="text-[10px] font-bold px-3 py-1 rounded-full text-white uppercase bg-green-500">
+                    grass
+                  </p>
+                  <p class="text-[10px] font-bold px-3 py-1 rounded-full text-white uppercase bg-red-500">
+                    flying
+                  </p>
+                </div>
+              </div>
+              <div name="pokemon-generation-info" class="w-fit h-24 ml-5 mr-5 text-center">
+                <p name="pokemon-generation-name" class="capitalize font-bold text-2xl text-slate-800 mb-2">
+                  Johto
+                </p>
+                <p name ="pokemon-generation" class="font-semibold text-sm text-slate-800">
+                  Generation 2
+                </p>
+              </div>
+          </div>
+          <div name="result button">
+            <button name="button-fangen" class="bg-slate-800 h-24 w-36 rounded-r-2xl text-white flex">
+              <div name="button-fangen-icon" class="h-24 w-16 flex items-center justify-center">
+                <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M2 12h20M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor"></path>
+                </svg>
+              </div>
+              <div name="button-fangen-label" class="h-24 font-bold text-md text-white flex items-center">
+                <p class="">
+                  Fangen
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div name="result-item" class="bg-white h-24 border border-gray-100 rounded-2xl shadow-md flex place-content-between">
+          <div name="result-item-header" class="bg-green-500 h-24 w-52 rounded-l-2xl flex place-content-between">
+            <div class="ml-4 flex items-center ">
+              <span name="pokemon-id" class="font-bold text-4xl text-white opacity-50">#907</span>
+            </div>
+            <div class="w-24 h-24 flex items-center align-center">
+              <img class="w-20 h-20" 
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/907.png" 
+              alt="floragato" />
+            </div>
+          </div>
+          <div name=" result-item-content" class="w-full flex place-content-around">
+              <div name="pokemon-details" class="w-fit h-24 ml-5 mr-5 text-center">
+                <p name= pokemon-name class="capitalize font-bold text-2xl text-slate-800 mb-2">
+                  floragato
+                </p>
+                <div name="pokemon-types">
+                  <p class="text-[10px] font-bold px-3 py-1 rounded-full text-white uppercase bg-green-500">
+                    grass
+                  </p>
+                  <p class="text-[10px] font-bold px-3 py-1 rounded-full text-white uppercase bg-red-500">
+                    flying
+                  </p>
+                </div>
+              </div>
+              <div name="pokemon-generation-info" class="w-fit h-24 ml-5 mr-5 text-center">
+                <p name="pokemon-generation-name" class="capitalize font-bold text-2xl text-slate-800 mb-2">
+                  Johto
+                </p>
+                <p name ="pokemon-generation" class="font-semibold text-sm text-slate-800">
+                  Generation 2
+                </p>
+              </div>
+          </div>
+          <div name="result button">
+            <button name="button-fangen" class="bg-slate-800 h-24 w-36 rounded-r-2xl text-white flex">
+              <div name="button-fangen-icon" class="h-24 w-16 flex items-center justify-center">
+                <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M2 12h20M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor"></path>
+                </svg>
+              </div>
+              <div name="button-fangen-label" class="h-24 font-bold text-md text-white flex items-center">
+                <p class="">
+                  Fangen
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        
+        -->      </div> 
+    </section>
+  </body>
+</html>
